@@ -63,12 +63,12 @@
 					p_area.innerHTML = `A área/trabalho do Quadrado é: ${area} mts²/W`;
 					p_energia.innerHTML = `A Variação da energia é: ${v_energia} mts²/W`;
 				} else if(value_select.value == "triangulo"){
-					var area = (base.value * altura.value)/2;
-					var v_energia = (calor.value - area) * (- 1);
+				        let area = (base.value * altura.value)/2;
+					let v_energia = (calor.value - area) * (- 1);
 					p_area.innerHTML = `A área/trabalho do Triângulo é: ${area} mts²/W`;
 					p_energia.innerHTML = `A Variação da energia é: ${v_energia} mts²/W`;
 				} else{
-					var area = (bmaior.value * bmenor.value)/2;
+					var area = ((bmaior.value + bmenor.value)*altura.value)/2;
 					var v_energia = (calor.value - area) * (- 1);
 					p_area.innerHTML = `A área/trabalho do Trapézio é: ${area} mts²/W`;
 					p_energia.innerHTML = `A Variação da energia é: ${v_energia} mts²/W`;
