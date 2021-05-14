@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Lista física</title>
+	</head>
+	<body>
+		<header>
+			<div class="integrantes-do-grupo">
+				<p>Integrantes</p>
+			</div>
+		</header>
+		<img src="img/img.png" alt="img-ux" id="img-ux">
+		<img src="img/img02.jpg" alt="img-ux" id="img-ux-02">
+		<main>
+			<section class="form">
+				<div class="container">
+						<label for="escolha de figura">Escolha uma figura:</label>  
+						<select id="escolher-figura" required>
+							<option value="quadrado" selected><p>Quadrado</p></option>
+							<option value="triangulo"><p>Triângulo</p></option>
+							<option value="trapezio"> <p>Trapézio</p></option>
+						</select>
+						<label for="quantidade-de-calor"><p>Quantidade de calor: </p><input type="number" id="quant-calor"></label>
+						<label for="medida-lado"><p>Lado:</p> <input type="number" id="lado"></label>
+						<label for="medida-base"><p>Base:</p> <input type="number" id="base"></label>
+						<label for="medida-altura"><p>Altura:</p> <input type="number" id="alt"></label>
+						<label for="medida-base-maior"><p>Base maior:</p> <input type="number" id="bmaior"></label>
+						<label for="medida-base-menor"><p>Base menor:</p> <input type="number" id="bmenor"></label>
+						<div class="footer-form">
+							<input type="button" value="Calcular" id="btn-calc">
+						</div>	
+				</div>
+			</section>
+		</main>
+		<div id="max-container">
+			<div class="result">
+				<span id="close" class="icon-x">X</span>
+				<p id="result-area">Olá!</p>
+				<p id="result-energia">Esperando</p>
+			</div>
+		</div>
+		<script>
+			const  btncalc = window.document.getElementById('btn-calc');
+			const value_select = window.document.getElementById('escolher-figura');
+			const calor = window.document.getElementById('quant-calor');
+			const lado = window.document.getElementById('lado');
+			const base = window.document.getElementById('base');
+			const altura = window.document.getElementById('alt');
+			const bmaior = window.document.getElementById('bmaior');
+			const bmenor = window.document.getElementById('bmenor');
+			const p_area = window.document.getElementById('result-area');
+			const p_energia = window.document.getElementById('result-energia');
+			btncalc.addEventListener('click', () => {
+				const max_container = window.document.getElementById('max-container');
+				max_container.classList.toggle("container-result");
+				if(value_select.value == "quadrado"){
+					let area = lado.value * lado.value;
+					let v_energia = (calor.value - area) * (- 1);
+					p_area.innerHTML = `A área/trabalho do Quadrado é: ${area} mts²/W`;
+					p_energia.innerHTML = `A Variação da energia é: ${v_energia} mts²/W`;
+				} else if(value_select.value == "triangulo"){
+					var area = (base.value * altura.value)/2;
+					var v_energia = (calor.value - area) * (- 1);
+					p_area.innerHTML = `A área/trabalho do Triângulo é: ${area} mts²/W`;
+					p_energia.innerHTML = `A Variação da energia é: ${v_energia} mts²/W`;
+				} else{
+					var area = (bmaior.value * bmenor.value)/2;
+					var v_energia = (calor.value - area) * (- 1);
+					p_area.innerHTML = `A área/trabalho do Trapézio é: ${area} mts²/W`;
+					p_energia.innerHTML = `A Variação da energia é: ${v_energia} mts²/W`;
+				}
+			});
+			var fechar = window.document.getElementById('close');
+			fechar.addEventListener('click', () =>{
+			const max_container = window.document.getElementById('max-container');
+			max_container.classList.toggle("container-result");
+				calor.value = " ";
+				lado.value = " ";
+				base.value = " ";
+				altura.value = " ";
+				bmaior.value = " ";
+				bmenor.value = " ";
+			});
+			const integrantes = window.document.querySelector(".integrantes-do-grupo");
+			integrantes.addEventListener('click', () =>{
+				const max_container = window.document.getElementById('max-container');
+				max_container.classList.toggle("container-result");
+				p_energia.innerHTML = "Sala: 3°D<br>Nomes:<br><br>Gustavo Henrique Valdo<br><br>Camila Raugust Ferreira<br><br>Jamilly Passos Colleti<br><br>João Pedro Bueno Minutti<br><br> Giovanna Jacondino."
+			});
+		</script>
+	</body>
+</html>
+	
